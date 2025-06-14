@@ -1,0 +1,30 @@
+.productos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.producto-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+mat-card-content h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+mat-card-content p {
+  font-weight: bold;
+  color: #333;
+}
+
+.example-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}

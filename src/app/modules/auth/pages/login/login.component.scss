@@ -1,0 +1,93 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #2232be, #ede7f6);
+  padding: 2rem;
+}
+
+
+.auth-form {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 1rem;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+  h2.auth-form__title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    color: #3f51b5;
+  }
+
+  .text-container,
+  mat-form-field,
+  mat-radio-group,
+  .interests-container {
+    display: block;
+    margin-bottom: 1.5rem;
+  }
+
+  mat-form-field {
+    width: 100%;
+  }
+
+  .mat-form-field-appearance-outline .mat-form-field-outline {
+    border-radius: 8px;
+  }
+
+  .field-error .mat-form-field-outline {
+    border-color: red;
+  }
+
+  mat-radio-group {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  mat-checkbox {
+    margin-right: 1rem;
+  }
+
+  .interests-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.5rem;
+  }
+
+  button[type='submit'] {
+    display: block;
+    margin: 2rem auto 0;
+    padding: 0.75rem 2rem;
+    font-weight: bold;
+    border-radius: 8px;
+  }
+   button[type='primary'] {
+    display: block;
+    margin: 2rem auto 0;
+    padding: 0.75rem 2rem;
+    font-weight: bold;
+    border-radius: 8px;
+  }
+  mat-error {
+    color: #d32f2f;
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+  }
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+
+    mat-radio-group {
+      flex-direction: column;
+    }
+
+    .interests-container {
+      grid-template-columns: 1fr;
+    }
+  }
+}
