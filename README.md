@@ -38,7 +38,7 @@ Este proyecto es una aplicación web desarrollada con Angular [Angular CLI](http
 
 ## 🚀 Demo desplegada
 
-🔗 [](https://deluxe-tarsier-eb0873.netlify.app)
+🔗 https://deluxe-tarsier-eb0873.netlify.app
 
 Debido al uso de una mock API no se pueden registrar nuevos usuarios. Para registrar levante el proyecto localmente.
 
