@@ -24,7 +24,7 @@ Este proyecto es una aplicación web desarrollada con Angular [Angular CLI](http
     Acceso a la app: http://localhost:4200
     
     Credenciales de prueba: 
-       email: test@mail.com
+       email: test@gmail.com
        password: 12345678
      
 
@@ -38,7 +38,7 @@ Este proyecto es una aplicación web desarrollada con Angular [Angular CLI](http
 
 ## 🚀 Demo desplegada
 
-🔗 [](https://tusitio.netlify.app)
+🔗 [](https://deluxe-tarsier-eb0873.netlify.app)
 
 Debido al uso de una mock API no se pueden registrar nuevos usuarios. Para registrar levante el proyecto localmente.
 
