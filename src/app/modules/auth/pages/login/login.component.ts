@@ -8,6 +8,8 @@ import {
   AbstractControl,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../../../../shared/services/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -20,10 +22,13 @@ export class LoginComponent {
 
   constructor(
     private readonly fb: FormBuilder,
-    private readonly router: Router
+    private readonly router: Router,
+    private readonly authService: AuthService
   ) {
-    this.buildForm();
+ this.buildForm();
   }
+
+
   buildForm() {
     this.loginForm = this.fb.group({
       email: [
@@ -41,9 +46,37 @@ export class LoginComponent {
 
   onSubmit() {
     const formValue = this.loginForm.value;
-    console.log('Form submitted', formValue);
+    // console.log('Form submitted', formValue);
+    if (this.loginForm.valid) {
+      this.authService.login(formValue.email, formValue.password).subscribe({
+        next: (response) => {
+          Swal.fire({
+            title: 'Login Successful',
+            text: 'Welcome back!',
+           icon: 'success',
+            position: 'top-end',
+            timer: 3000,
+          });
+        this.router.navigate(['/products']);
+        },
+        error: (error) => {
+          Swal.fire({
+            title: 'Login Failed',
+            text: 'Correo o constraseña inválidos. Por favor intenta de nuevo.',
+            icon: 'error',
+            confirmButtonText: 'OK',
+          });
+
+        },
+      });
+    } else {
+      this.loginForm.markAllAsTouched();
+      console.log('Form is invalid');
+    }
   }
   goToRegister(): void {
     this.router.navigate(['/auth/register']);
   }
 }
+
+

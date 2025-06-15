@@ -77,8 +77,6 @@ export class RegisterComponent implements OnInit {
     this.minDate = new Date(currentYear - 20, 0, 1);
     this.maxDate = new Date();
 
-    // this.loadCountries();
-
     this.buildForm();
   }
   ngOnInit(): void {
@@ -143,7 +141,6 @@ export class RegisterComponent implements OnInit {
       text,
     };
 
-    // Evita duplicados
     if (!this.isSelected(customInterest.value)) {
       this.interests.push(customInterest);
       this.interestsFormArray.push(this.fb.control(customInterest));
@@ -181,13 +178,6 @@ export class RegisterComponent implements OnInit {
       alert('Ocurrió un error al registrar el usuario');
     }
   });
-    // this.submitted = true;
-
-    // if (this.registerForm.invalid) {
-    //   return;
-    // }
-    // const formValue = this.registerForm.value;
-    // console.log('Form submitted', formValue);
   }
 
   matchPassword(group: AbstractControl): { [key: string]: any } | null {
@@ -206,30 +196,10 @@ export class RegisterComponent implements OnInit {
     this.countriesCopy = this.countries.filter((field) =>
       field.name.common.trim().toLocaleLowerCase().includes(filterValue)
     );
-    // this.countriesCopy.sort((first, second) =>
-    //   first.name.common.localeCompare(second.name.common)
-    // );
-  }
 
+  }
   cleanSearchFields(): void {
     this.filterCountry = '';
     this.filterCountries();
   }
-
-
-
-
-//   getUsers(): Observable<User[]> {
-//   return this.http.get<User[]>(this.apiUrl);
-// }
-  // loadCountries(): void {
-  //   this.http.get<any[]>('https://restcountries.com/v3.1/all').subscribe((data) => {
-  //     this.countries = data
-  //       .map((country:any) => ({
-  //         code: country.cca2,
-  //         name: country.name.common
-  //       }))
-  //       .sort((a:any, b:any) => a.name.localeCompare(b.name));
-  //   });
-  // }
 }

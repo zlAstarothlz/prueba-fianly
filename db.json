@@ -1,0 +1,48 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Gustavo",
+      "email": "gustavo@email.com",
+      "password": "12345678",
+      "dateBirth": "1990-01-01",
+      "gender": "male",
+      "interests": [],
+      "country": "Colombia"
+    },
+    {
+      "id": "116a",
+      "name": "pedrito",
+      "email": "pedrito@gmail.com",
+      "password": "123456789",
+      "dateBirth": "2025-06-12T05:00:00.000Z",
+      "gender": "male",
+      "interests": [
+        {
+          "value": "music",
+          "text": "Música"
+        },
+        {
+          "value": "movies",
+          "text": "Películas"
+        }
+      ],
+      "country": "Guatemala"
+    },
+    {
+      "id": "c765",
+      "name": "Pancho",
+      "email": "pancho@example.com",
+      "password": "123456789",
+      "dateBirth": "2025-04-09T05:00:00.000Z",
+      "gender": "female",
+      "interests": [
+        {
+          "value": "sports",
+          "text": "Deportes"
+        }
+      ],
+      "country": "Honduras"
+    }
+  ]
+}
