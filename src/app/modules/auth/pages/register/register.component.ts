@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {
   FormArray,
   FormBuilder,
@@ -8,7 +8,10 @@ import {
   AbstractControl,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-// import { HttpClient } from '@angular/common/http';
+import { CountryService } from '../../../../shared/services/country.service';
+import { Country } from 'src/app/shared/interfaces/country.interface';
+import { UserService } from 'src/app/shared/services/user.service';
+import { Observable } from 'rxjs';
 
 interface InputInfo {
   value: string;
@@ -20,7 +23,11 @@ interface InputInfo {
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit {
+  private countryService = inject(CountryService);
+  public countries: Country[] = [];
+  public countriesCopy: Country[] = [];
+  public filterCountry = '';
   public submitted = false;
   public emailForm!: FormGroup;
   customInterestCtrl = new FormControl('');
@@ -28,7 +35,6 @@ export class RegisterComponent {
   public maxDate!: Date;
   public registerForm!: FormGroup;
   public hidePassword = true;
-  public countries:{name:string}[] = [];
   public genders: InputInfo[] = [
     {
       value: 'female',
@@ -62,31 +68,50 @@ export class RegisterComponent {
     },
   ];
 
-  constructor(private readonly fb: FormBuilder, private readonly router: Router) {
+  constructor(
+    private readonly fb: FormBuilder,
+    private readonly router: Router,
+    private readonly userService: UserService
+  ) {
     const currentYear = new Date().getFullYear();
     this.minDate = new Date(currentYear - 20, 0, 1);
     this.maxDate = new Date();
 
     // this.loadCountries();
 
-
     this.buildForm();
+  }
+  ngOnInit(): void {
+    this.countryService.getCountries().subscribe((response) => {
+      this.countries = response;
+      this.countriesCopy = [...this.countries];
+    });
   }
 
   buildForm() {
-    this.registerForm = this.fb.group({
-      name: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)]],
-      password: ['', [Validators.required, Validators.minLength(8)]],
-      confirmPassword: ['', [Validators.required]],
-      dateBirth: ['', [Validators.required]],
-      gender: ['',   [Validators.required]],
-      interests: this.fb.array([],Validators.required),
-      country: [''],
-    },
-  {
-    validators:this.matchPassword}
-  );
+    this.registerForm = this.fb.group(
+      {
+        name: ['', [Validators.required]],
+        email: [
+          '',
+          [
+            Validators.required,
+            Validators.pattern(
+              /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+            ),
+          ],
+        ],
+        password: ['', [Validators.required, Validators.minLength(8)]],
+        confirmPassword: ['', [Validators.required]],
+        dateBirth: ['', [Validators.required]],
+        gender: ['', [Validators.required]],
+        interests: this.fb.array([], Validators.required),
+        country: [''],
+      },
+      {
+        validators: this.matchPassword,
+      }
+    );
   }
   get interestsFormArray(): FormArray {
     return this.registerForm.get('interests') as FormArray;
@@ -128,37 +153,83 @@ export class RegisterComponent {
   }
 
   onSubmit() {
-    this.submitted = true;
 
-    if (this.registerForm.invalid) {
-      return;
+      this.submitted = true;
+
+  if (this.registerForm.invalid) return;
+
+  const formValue = this.registerForm.value;
+
+  const newUser = {
+    name: formValue.name,
+    email: formValue.email,
+    password: formValue.password,
+    dateBirth: formValue.dateBirth,
+    gender: formValue.gender,
+    interests: formValue.interests,
+    country: formValue.country
+  };
+
+  this.userService.register(newUser).subscribe({
+    next: (response) => {
+      console.log('Usuario registrado:', response);
+      alert('¡Registro exitoso!');
+      this.router.navigate(['/auth/login']);
+    },
+    error: (err) => {
+      console.error('Error al registrar:', err);
+      alert('Ocurrió un error al registrar el usuario');
     }
-    const formValue = this.registerForm.value;
-    console.log('Form submitted', formValue);
+  });
+    // this.submitted = true;
+
+    // if (this.registerForm.invalid) {
+    //   return;
+    // }
+    // const formValue = this.registerForm.value;
+    // console.log('Form submitted', formValue);
   }
 
+  matchPassword(group: AbstractControl): { [key: string]: any } | null {
+    const password = group.get('password')?.value;
+    const confirmPassword = group.get('confirmPassword')?.value;
 
-matchPassword(group: AbstractControl): { [key: string]: any } | null {
-  const password = group.get('password')?.value;
-  const confirmPassword = group.get('confirmPassword')?.value;
+    return password === confirmPassword ? null : { passwordsMismatch: true };
+  }
 
-  return password === confirmPassword ? null : { passwordsMismatch: true };
-}
-
-
-goToLogin() : void {
+  goToLogin(): void {
     this.router.navigate(['/auth/login']);
   }
 
-// loadCountries(): void {
-//   this.http.get<any[]>('https://restcountries.com/v3.1/all').subscribe((data) => {
-//     this.countries = data
-//       .map((country:any) => ({
-//         code: country.cca2,
-//         name: country.name.common
-//       }))
-//       .sort((a:any, b:any) => a.name.localeCompare(b.name));
-//   });
-// }
+  filterCountries(): void {
+    const filterValue = this.filterCountry.trim().toLocaleLowerCase();
+    this.countriesCopy = this.countries.filter((field) =>
+      field.name.common.trim().toLocaleLowerCase().includes(filterValue)
+    );
+    // this.countriesCopy.sort((first, second) =>
+    //   first.name.common.localeCompare(second.name.common)
+    // );
+  }
 
+  cleanSearchFields(): void {
+    this.filterCountry = '';
+    this.filterCountries();
+  }
+
+
+
+
+//   getUsers(): Observable<User[]> {
+//   return this.http.get<User[]>(this.apiUrl);
+// }
+  // loadCountries(): void {
+  //   this.http.get<any[]>('https://restcountries.com/v3.1/all').subscribe((data) => {
+  //     this.countries = data
+  //       .map((country:any) => ({
+  //         code: country.cca2,
+  //         name: country.name.common
+  //       }))
+  //       .sort((a:any, b:any) => a.name.localeCompare(b.name));
+  //   });
+  // }
 }

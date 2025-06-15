@@ -13,10 +13,11 @@ const routes: Routes = [
     path:'login',
     component: LoginComponent
   },
-  {
-    path: '**',
-    redirectTo: 'register'
-  },
+  // {
+  //   path: '**',
+  //   redirectTo: 'register'
+  // },
+  { path: '**', redirectTo: 'login' }
 ];
 
 @NgModule({

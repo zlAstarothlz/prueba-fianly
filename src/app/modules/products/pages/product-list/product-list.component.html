@@ -1,52 +1,91 @@
-<div class="productos-grid">
-  <mat-card *ngFor="let producto of productos" class="producto-card">
-    <img mat-card-image [src]="producto.imagenUrl" alt="{{ producto.nombre }}">
-    <mat-card-content>
-      <h3>{{ producto.nombre }}</h3>
-      <p>${{ producto.precio }}</p>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-raised-button color="primary">Ver</button>
-    </mat-card-actions>
-  </mat-card>
-</div>
+<!--  Barra superior -->
+<mat-toolbar color="primary">
+  <ng-container *ngIf="user as u">
+    <button mat-icon-button [matMenuTriggerFor]="userMenu" aria-label="Usuario">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+    <span style="margin-left: 8px">{{ u.name }}</span>
+  </ng-container>
+  <span class="toolbar-title">Tienda Virtual</span>
+  <span class="spacer"></span>
+</mat-toolbar>
 
-
-
-<div class = "productos-grid">
-  <mat-card *ngFor="let producto of productos" class="example-card">
-  <mat-card-header>
-    <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>Shiba Inu</mat-card-title>
-    <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-  </mat-card-header>
-  <img mat-card-image src="https://picsum.photos/300/200?random=1'" alt="Photo of a Shiba Inu">
-  <mat-card-content>
+<!-- Dashboard de usuario -->
+<mat-menu #userMenu="matMenu">
+  <div style="padding: 1rem; max-width: 300px">
+    <h3>👤 Información del usuario</h3>
+    <p><strong>Nombre:</strong> {{ user?.name }}</p>
+    <p><strong>Email:</strong> {{ user?.email }}</p>
+    <p><strong>Fecha de nacimiento:</strong> {{ user?.dateBirth }}</p>
+    <p><strong>Género:</strong> {{ user?.gender }}</p>
     <p>
-      The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-      A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-      bred for hunting.
+      <strong>Intereses:</strong>
+      <span *ngFor="let interest of user?.interests; let last = last">
+        {{ interest.text }}<span *ngIf="!last">, </span>
+      </span>
     </p>
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-raised-button color="primary">Ver</button>
-  </mat-card-actions>
-</mat-card>
+    <p><strong>País:</strong> {{ user?.country }}</p>
+    <button
+      mat-raised-button
+      color="warn"
+      (click)="logout()"
+      style="margin-top: 1rem"
+    >
+      Cerrar sesión
+    </button>
+  </div>
+</mat-menu>
+
+<!-- Filtros de búsqueda -->
+<div class="filtro">
+  <mat-form-field appearance="outline" class="filtro-input">
+    <mat-label>Buscar producto</mat-label>
+    <input
+      matInput
+      [(ngModel)]="searchProduct"
+      placeholder="Nombre del producto"
+    />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="filtro-input">
+    <mat-label>Precio mínimo</mat-label>
+    <input matInput type="number" [(ngModel)]="minPrice" placeholder="0" />
+    <mat-hint *ngIf="minPrice"
+      >Ingresado:
+      {{ minPrice | currency : "COP" : "symbol" : "1.0-0" }}</mat-hint
+    >
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="filtro-input">
+    <mat-label>Precio máximo</mat-label>
+    <input matInput type="number" [(ngModel)]="maxPrice" placeholder="10000000" />
+    <mat-hint *ngIf="maxPrice"
+      >Ingresado:
+      {{ maxPrice | currency : "COP" : "symbol" : "1.0-0" }}</mat-hint
+    >
+  </mat-form-field>
 </div>
 
+<!-- Catálogo de productos -->
+<div class="productos-grid">
+  <ng-container *ngIf="products.length !== 0">
+    <ng-container
+      *ngFor="
+        let product of paginatedProducts
+          | filter : searchProduct : minPrice : maxPrice
+          | orderBy : 'asc'
+      "
+    >
+      <app-product [product]="product"></app-product>
+    </ng-container>
+  </ng-container>
+</div>
 
-<p>
-  <mat-toolbar color="primary">
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <span>My App</span>
-    <span class="example-spacer"></span>
-    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-      <mat-icon>favorite</mat-icon>
-    </button>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-      <mat-icon>share</mat-icon>
-    </button>
-  </mat-toolbar>
-</p>
+<!-- Paginación -->
+<div class="pagination-controls">
+  <button (click)="prevPage()" [disabled]="currentPage === 1">Anterior</button>
+  <span>Página {{ currentPage }} de {{ totalPages() }}</span>
+  <button (click)="nextPage()" [disabled]="currentPage === totalPages()">
+    Siguiente
+  </button>
+</div>

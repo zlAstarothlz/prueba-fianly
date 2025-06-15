@@ -8,6 +8,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatCardModule } from '@angular/material/card';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatSelectModule} from '@angular/material/select';
+import { MatMenuModule } from '@angular/material/menu';
 
 
 
@@ -21,7 +23,10 @@ export const MATERIAL_MODULES = [
   MatDatepickerModule,
   MatNativeDateModule,
   MatCardModule,
-  MatToolbarModule
+  MatToolbarModule,
+  MatSelectModule,
+  MatMenuModule
+
 ];
 
 
