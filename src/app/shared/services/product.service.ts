@@ -15,13 +15,17 @@ export class ProductService {
 
   constructor(private http: HttpClient) {}
 
-  getProductbyId(id: string): Product | undefined {
-
-   if (this.products.length === 0) {
-      this.getAllProducts().subscribe();
+  getProductById(id: string): Observable<Product | undefined> {
+    if (this.products.length === 0) {
+      return this.getAllProducts().pipe(
+        map((products) => products.find((product) => product.id.toString() === id))
+      );
+    } else {
+      return new Observable<Product | undefined>((observer) => {
+        observer.next(this.products.find((product) => product.id.toString() === id));
+        observer.complete();
+      });
     }
-
-    return this.products.find((product) => product.id.toString() === id);
   }
 
   getAllProducts(): Observable<Product[]> {

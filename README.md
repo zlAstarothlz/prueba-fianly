@@ -1,27 +1,46 @@
 # PruebaFianly
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.11.
+Este proyecto es una aplicación web desarrollada con Angular [Angular CLI](https://github.com/angular/angular-cli) versión 15.2.11, como parte de una prueba técnica. Incluye autenticación, registro de usuarios y un catálogo de productos con filtros y detalles, todo consumiendo datos desde una mock API
 
-## Development server
+## 💻 Pasos para correr el proyecto localmente
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+1. **Clona el repositorio**
+   
+   git clone https://github.com/zlAstarothlz/prueba-fianly
+   cd tu-repo
 
-## Code scaffolding
+2. **Instala dependencias**
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+     npm install
+    
+3.  **Levanta la API mock con json-server**
 
-## Build
+     Revisa si json-server está instalado, sino ejecuta: npm install -g json-server
+     Luego ejecuta: npx json-server --watch db.json --port 3000
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+4.  **Corre el proyecto Angular**
 
-## Running unit tests
+    Ejecuta: ng serve
+    Acceso a la app: http://localhost:4200
+    
+    Credenciales de prueba: 
+       email: test@mail.com
+       password: 12345678
+     
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## 🧰 Librerías utilizadas
 
-## Running end-to-end tests
+ ✅ Angular Material – para componentes UI modernos y responsivos
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+ ✅ JSON Server – para simular una API REST
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## 🚀 Demo desplegada
+
+🔗 [](https://tusitio.netlify.app)
+
+Debido al uso de una mock API no se pueden registrar nuevos usuarios. Para registrar levante el proyecto localmente.
+
+
+

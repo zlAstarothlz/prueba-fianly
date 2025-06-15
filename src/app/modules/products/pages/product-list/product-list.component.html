@@ -1,13 +1,13 @@
 <!--  Barra superior -->
 <mat-toolbar color="primary">
+  <span class="spacer"></span>
+  <span class="toolbar-title">Tienda Virtual</span>
   <ng-container *ngIf="user as u">
     <button mat-icon-button [matMenuTriggerFor]="userMenu" aria-label="Usuario">
       <mat-icon>account_circle</mat-icon>
     </button>
     <span style="margin-left: 8px">{{ u.name }}</span>
   </ng-container>
-  <span class="toolbar-title">Tienda Virtual</span>
-  <span class="spacer"></span>
 </mat-toolbar>
 
 <!-- Dashboard de usuario -->
@@ -46,8 +46,8 @@
       placeholder="Nombre del producto"
     />
   </mat-form-field>
-  <h3>Ordenar por precio: </h3>
   <mat-radio-group [(ngModel)]="orderProducts">
+    <h3>Ordenar por precio: </h3>
     <mat-radio-button value="asc">De menor a mayor</mat-radio-button>
     <mat-radio-button value="desc">De mayor a menor</mat-radio-button>
   </mat-radio-group>

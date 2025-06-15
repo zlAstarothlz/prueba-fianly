@@ -15,10 +15,16 @@ export class ProductsDetailsComponent implements OnInit {
   ngOnInit(): void {
     const productId = this.route.snapshot.paramMap.get('id');
     if (productId) {
-      this.product = this.productsService.getProductbyId(productId);
-      if (!this.product) {
-        console.error('Product not found');
-      }
+      this.productsService.getProductById(productId)
+      .subscribe({
+        next: (product) => {
+          this.product = product;
+          console.log('Producto encontrado:', this.product);
+        },
+        error: (error) => {
+          console.error('Error al obtener el producto:', error);
+        },
+      });
     } else {
       console.error('No product ID provided');
     }

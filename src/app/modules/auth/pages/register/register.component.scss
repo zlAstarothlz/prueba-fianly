@@ -15,7 +15,7 @@
   font-size: 2rem;
   font-weight: 600;
   margin-top: 1rem;
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
   color: #343841;
 }
 
@@ -43,7 +43,6 @@ mat-radio-group {
 mat-form-field {
   width: 100%;
 }
-
 
 .input-search {
   width: -webkit-fill-available;
@@ -73,7 +72,6 @@ mat-form-field {
   background: white;
 }
 
-
 .input-group {
   position: relative;
 }
@@ -99,20 +97,16 @@ mat-form-field {
   left: 0;
   translate: 10px 10px;
   color: #000;
-  transition: translate 500ms,
-    scale 500ms;
+  transition: translate 500ms, scale 500ms;
 }
 
-.input-group__input:focus +
-.input-group__label,
-.input-group__input:valid +
-.input-group__label {
+.input-group__input:focus + .input-group__label,
+.input-group__input:valid + .input-group__label {
   padding-inline: 5px;
   translate: 10px -14px;
   scale: 0.8;
   background-color: #fff;
 }
-
 
 .m-2 {
   margin: 0.5rem; /* Bootstrap usa 0.25rem * 2 = 0.5rem */
@@ -128,4 +122,38 @@ mat-form-field {
 
 .h-75 {
   height: 75% !important;
+}
+
+.interest-title {
+  margin: 0.5rem 0;
+}
+
+.interest-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  mat-form-field {
+    width: 70%;
+  }
+  button {
+    height: 43px;
+  }
+}
+
+.interest-container__text {
+  width: 70%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .two-blocks {
+    grid-template-columns: 1fr;
+  }
+
+  .interest-container__text {
+    width: 100%;
+    grid-template-columns: 1fr;
+  }
 }

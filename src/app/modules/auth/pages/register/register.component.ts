@@ -74,8 +74,8 @@ export class RegisterComponent implements OnInit {
     private readonly userService: UserService
   ) {
     const currentYear = new Date().getFullYear();
-    this.minDate = new Date(currentYear - 20, 0, 1);
-    this.maxDate = new Date();
+    this.minDate = new Date(currentYear - 110, 0, 1);
+    this.maxDate = new Date(currentYear - 3, 0, 1);
 
     this.buildForm();
   }

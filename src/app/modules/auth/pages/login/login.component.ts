@@ -51,20 +51,22 @@ export class LoginComponent {
       this.authService.login(formValue.email, formValue.password).subscribe({
         next: (response) => {
           Swal.fire({
-            title: 'Login Successful',
-            text: 'Welcome back!',
+            title: 'Inicio de sesión exitoso',
+            text: 'Bienvenido',
            icon: 'success',
             position: 'top-end',
             timer: 3000,
+            showConfirmButton: false,
           });
         this.router.navigate(['/products']);
         },
         error: (error) => {
           Swal.fire({
             title: 'Login Failed',
-            text: 'Correo o constraseña inválidos. Por favor intenta de nuevo.',
+            text: 'Correo o contraseña inválidos. Por favor intenta de nuevo.',
             icon: 'error',
             confirmButtonText: 'OK',
+            confirmButtonColor: '#fd823f',
           });
 
         },
