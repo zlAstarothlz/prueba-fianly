@@ -25,6 +25,9 @@ Este proyecto es una aplicación web desarrollada con Angular [Angular CLI](http
     
     Credenciales de prueba: 
        email: test@gmail.com
+       password: 12345678 ||
+
+       email: pedrito@gmail.com
        password: 12345678
      
 
