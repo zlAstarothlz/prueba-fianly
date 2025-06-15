@@ -1,7 +1,7 @@
 {
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Gustavo",
       "email": "gustavo@email.com",
       "password": "12345678",
@@ -43,6 +43,207 @@
         }
       ],
       "country": "Honduras"
+    },
+    {
+      "id": "ed43",
+      "name": "Pruebra",
+      "email": "test@mail.com",
+      "password": "12345678",
+      "dateBirth": "2018-04-11T05:00:00.000Z",
+      "gender": "male",
+      "interests": [
+        {
+          "value": "sports",
+          "text": "Deportes"
+        },
+        {
+          "value": "music",
+          "text": "Música"
+        }
+      ],
+      "country": "Bolivia"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Laptop Lenovo IdeaPad 3",
+      "description": "Laptop con procesador Intel Core i5 y 8GB RAM.",
+      "price": 2200000,
+      "category": "Tecnología",
+      "image": "https://picsum.photos/id/180/400/300",
+      "stock": 12
+    },
+    {
+      "id": 2,
+      "name": "Auriculares Bluetooth JBL",
+      "description": "Auriculares inalámbricos con sonido estéreo.",
+      "price": 350000,
+      "category": "Audio",
+      "image": "https://picsum.photos/id/109/400/300",
+      "stock": 25
+    },
+    {
+      "id": 3,
+      "name": "Smartphone Samsung Galaxy A54",
+      "description": "Celular con pantalla AMOLED y cámara triple.",
+      "price": 1599000,
+      "category": "Tecnología",
+      "image": "https://picsum.photos/id/250/400/300",
+      "stock": 18
+    },
+    {
+      "id": 4,
+      "name": "Teclado Mecánico Redragon",
+      "description": "Teclado gamer retroiluminado con switches azules.",
+      "price": 190000,
+      "category": "Accesorios",
+      "image": "https://picsum.photos/id/410/400/300",
+      "stock": 40
+    },
+    {
+      "id": 5,
+      "name": "Silla Gamer Cougar Armor One",
+      "description": "Silla ergonómica para largas sesiones de juego.",
+      "price": 850000,
+      "category": "Oficina",
+      "image": "https://picsum.photos/id/912/400/300",
+      "stock": 7
+    },
+    {
+      "id": 6,
+      "name": "Smartwatch Xiaomi Mi Band 8",
+      "description": "Pulsera inteligente con sensor de ritmo cardíaco.",
+      "price": 160000,
+      "category": "Tecnología",
+      "image": "https://picsum.photos/id/32/400/300",
+      "stock": 30
+    },
+    {
+      "id": 7,
+      "name": "Impresora HP DeskJet 2710",
+      "description": "Multifuncional inalámbrica para casa u oficina.",
+      "price": 299000,
+      "category": "Impresoras",
+      "image": "https://picsum.photos/id/677/400/300",
+      "stock": 15
+    },
+    {
+      "id": 8,
+      "name": "Mouse Logitech MX Master 3",
+      "description": "Mouse inalámbrico ergonómico con alta precisión.",
+      "price": 420000,
+      "category": "Accesorios",
+      "image": "https://picsum.photos/id/443/400/300",
+      "stock": 22
+    },
+    {
+      "id": 9,
+      "name": "Monitor LG 27 pulgadas 4K",
+      "description": "Pantalla UHD con tecnología IPS y HDR.",
+      "price": 1350000,
+      "category": "Tecnología",
+      "image": "https://picsum.photos/id/890/400/300",
+      "stock": 10
+    },
+    {
+      "id": 10,
+      "name": "Router TP-Link Archer AX10",
+      "description": "Router Wi‑Fi6 de doble banda para alta velocidad.",
+      "price": 230000,
+      "category": "Redes",
+      "image": "https://picsum.photos/id/1011/400/300",
+      "stock": 35
+    },
+    {
+      "id": 11,
+      "name": "Tablet Samsung Galaxy Tab A8",
+      "description": "Pantalla de 10.5pulgadas, ideal para entretenimiento.",
+      "price": 980000,
+      "category": "Tecnología",
+      "image": "https://picsum.photos/id/63/400/300",
+      "stock": 14
+    },
+    {
+      "id": 12,
+      "name": "Cámara Canon EOS Rebel T7",
+      "description": "Cámara réflex digital con lente18‑55mm.",
+      "price": 1850000,
+      "category": "Fotografía",
+      "image": "https://picsum.photos/id/1027/400/300",
+      "stock": 5
+    },
+    {
+      "id": 13,
+      "name": "Disco Duro Externo Seagate 2TB",
+      "description": "Almacenamiento portátil USB3.0.",
+      "price": 300000,
+      "category": "Almacenamiento",
+      "image": "https://picsum.photos/id/190/400/300",
+      "stock": 40
+    },
+    {
+      "id": 14,
+      "name": "Memoria USB Kingston 64GB",
+      "description": "USB3.2 de alta velocidad para datos.",
+      "price": 40000,
+      "category": "Almacenamiento",
+      "image": "https://picsum.photos/id/250/400/300",
+      "stock": 100
+    },
+    {
+      "id": 15,
+      "name": "Cargador Anker PowerPort",
+      "description": "Cargador rápido con dos puertos USB.",
+      "price": 90000,
+      "category": "Accesorios",
+      "image": "https://picsum.photos/id/287/400/300",
+      "stock": 60
+    },
+    {
+      "id": 16,
+      "name": "Parlante portátil Bose SoundLink",
+      "description": "Altavoz inalámbrico con sonido de alta calidad.",
+      "price": 520000,
+      "category": "Audio",
+      "image": "https://picsum.photos/id/678/400/300",
+      "stock": 9
+    },
+    {
+      "id": 17,
+      "name": "Cámara de seguridad Xiaomi",
+      "description": "Cámara IP con visión nocturna y detección de movimiento.",
+      "price": 160000,
+      "category": "Seguridad",
+      "image": "https://picsum.photos/id/31/400/300",
+      "stock": 28
+    },
+    {
+      "id": 18,
+      "name": "Tarjeta MicroSD SanDisk 128GB",
+      "description": "Almacenamiento rápido para celulares y cámaras.",
+      "price": 70000,
+      "category": "Almacenamiento",
+      "image": "https://picsum.photos/id/472/400/300",
+      "stock": 80
+    },
+    {
+      "id": 19,
+      "name": "Cargador portátil Xiaomi 20000mAh",
+      "description": "Power bank con carga rápida y dos salidas.",
+      "price": 110000,
+      "category": "Accesorios",
+      "image": "https://picsum.photos/id/783/400/300",
+      "stock": 33
+    },
+    {
+      "id": 20,
+      "name": "Webcam Logitech C920 HD Pro",
+      "description": "Cámara web Full HD ideal para videollamadas.",
+      "price": 320000,
+      "category": "Accesorios",
+      "image": "https://picsum.photos/id/204/400/300",
+      "stock": 11
     }
   ]
 }

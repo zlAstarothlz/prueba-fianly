@@ -32,7 +32,7 @@ export class LoginComponent {
   buildForm() {
     this.loginForm = this.fb.group({
       email: [
-        '',
+        'pedrito@gmail.com',
         [
           Validators.required,
           Validators.pattern(
@@ -40,7 +40,7 @@ export class LoginComponent {
           ),
         ],
       ],
-      password: ['', [Validators.required, Validators.minLength(8)]],
+      password: ['123456789', [Validators.required, Validators.minLength(8)]],
     });
   }
 

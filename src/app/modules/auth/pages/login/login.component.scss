@@ -1,101 +1,35 @@
-:host {
-  display: block;
-  min-height: 100vh;
-  background: linear-gradient(135deg, #2232be, #ede7f6);
-  padding: 2rem;
+.login-container {
+  background: #fff;
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  min-width: 500px;
+  padding: 40px 20px;
+  border-radius: 15px;
+  box-shadow: 2px 4px 7px #00000026;
 }
 
-
-.auth-form {
-  max-width: 600px;
-  margin: 2rem auto;
-  padding: 2rem;
-  border-radius: 1rem;
-  background-color: #ffffff;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-
-  h2.auth-form__title {
-    text-align: center;
-    font-size: 2rem;
-    font-weight: 600;
-    margin-bottom: 2rem;
-    color: #3f51b5;
-  }
-
-  .text-container,
-  mat-form-field,
-  mat-radio-group,
-  .interests-container {
-    display: block;
-    margin-bottom: 1.5rem;
-  }
-
-  mat-form-field {
-    width: 100%;
-  }
-
-  .mat-form-field-appearance-outline .mat-form-field-outline {
-    border-radius: 8px;
-  }
-
-  .field-error .mat-form-field-outline {
-    border-color: red;
-  }
-
-  mat-radio-group {
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
-    margin-top: 0.5rem;
-  }
-
-  mat-checkbox {
-    margin-right: 1rem;
-  }
-
-  .interests-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 0.5rem;
-  }
-
-
-  mat-error {
-    color: #d32f2f;
-    font-size: 0.85rem;
-    margin-top: 0.25rem;
-  }
-
-  @media (max-width: 768px) {
-    padding: 1.5rem;
-
-    mat-radio-group {
-      flex-direction: column;
-    }
-
-    .interests-container {
-      grid-template-columns: 1fr;
-    }
-  }
+.login-form__title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 600;
+  margin-top: 1rem;
+  margin-bottom: 4rem;
+  color: #343841;
 }
 
+.inputs-container,
+mat-form-field,
+mat-radio-group {
+  margin-bottom: 0.5rem;
+}
 
+mat-form-field {
+  width: 100%;
+}
 
-::ng-deep mat-form-field .mat-form-field-suffix {
+.buttons-container {
   display: flex;
-  align-items: center;
-  height: auto;
-}
-
-::ng-deep mat-form-field .mat-form-field-suffix .mat-icon-button {
-  margin: 0;
-  padding: 0;
-  height: 40px;
-  width: 40px;
-  line-height: 1;
-  display: flex;
-  align-items: center;
   justify-content: center;
-  position: relative;
-  top: 0;
+  gap: 1rem;
 }

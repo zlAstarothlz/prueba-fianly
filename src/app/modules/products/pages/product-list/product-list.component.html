@@ -37,7 +37,7 @@
 </mat-menu>
 
 <!-- Filtros de búsqueda -->
-<div class="filtro">
+<div class="filters">
   <mat-form-field appearance="outline" class="filtro-input">
     <mat-label>Buscar producto</mat-label>
     <input
@@ -46,24 +46,11 @@
       placeholder="Nombre del producto"
     />
   </mat-form-field>
-
-  <mat-form-field appearance="outline" class="filtro-input">
-    <mat-label>Precio mínimo</mat-label>
-    <input matInput type="number" [(ngModel)]="minPrice" placeholder="0" />
-    <mat-hint *ngIf="minPrice"
-      >Ingresado:
-      {{ minPrice | currency : "COP" : "symbol" : "1.0-0" }}</mat-hint
-    >
-  </mat-form-field>
-
-  <mat-form-field appearance="outline" class="filtro-input">
-    <mat-label>Precio máximo</mat-label>
-    <input matInput type="number" [(ngModel)]="maxPrice" placeholder="10000000" />
-    <mat-hint *ngIf="maxPrice"
-      >Ingresado:
-      {{ maxPrice | currency : "COP" : "symbol" : "1.0-0" }}</mat-hint
-    >
-  </mat-form-field>
+  <h3>Ordenar por precio: </h3>
+  <mat-radio-group [(ngModel)]="orderProducts">
+    <mat-radio-button value="asc">De menor a mayor</mat-radio-button>
+    <mat-radio-button value="desc">De mayor a menor</mat-radio-button>
+  </mat-radio-group>
 </div>
 
 <!-- Catálogo de productos -->
@@ -72,8 +59,8 @@
     <ng-container
       *ngFor="
         let product of paginatedProducts
-          | filter : searchProduct : minPrice : maxPrice
-          | orderBy : 'asc'
+          | filter : searchProduct
+          | orderBy : orderProducts
       "
     >
       <app-product [product]="product"></app-product>

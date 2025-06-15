@@ -1,52 +1,8 @@
-// import { Injectable } from '@angular/core';
-// import { delay, of, tap } from 'rxjs';
-
-// @Injectable({
-//   providedIn: 'root',
-// })
-// export class AuthService {
-//   public token: string | null = null;
-//   public user: any = null;
-
-//   constructor() {}
-
-//   login(username: string, password: string) {
-//     return of({
-//       success: true,
-//       token: 'fake-jwt-token',
-//       user: {
-//         id: 1,
-//         username: username,
-//         email: 'example.com',
-//       },
-//     }).pipe(
-//       tap((response) => {
-//         // Simulate storing the token in local storage
-//         this.token = response.token;
-//         this.user = response.user;
-//         localStorage.setItem('token', response.token);
-//         localStorage.setItem('user', JSON.stringify(response.user));
-//       }),delay(1000) // Simulate network delay
-//     );
-//   }
-//   register(data: string) {
-//     return of({
-//       success: true,
-//       token: 'fake-jwt-token',
-//       user: {
-//         id: 1,
-//         data: 'data',
-//         email: 'example.com',
-//       },
-//     });
-//   }
-// }
-
-
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 export interface User {
   id: number;
@@ -63,7 +19,7 @@ export interface User {
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:3000/users'; // mock API users endpoint
+  private apiUrl = `${environment.apiUrl}/users`;
   token: any;
 
   constructor(private http: HttpClient) {}
